@@ -60,6 +60,42 @@ function detectPackageType() {
 // Initialize package type
 detectPackageType();
 
+// ==================== FIELD VALIDATION RULES ====================
+const fieldRules = {
+    fullName: {
+        pattern: /^[A-Za-zÀ-ÖØ-öø-ÿ\s'\-]{2,100}$/,
+        message: 'Full name must be 2–100 letters (no numbers or special characters)'
+    },
+    phone: {
+        pattern: /^[\+]?[\d\s\-\(\)]{7,20}$/,
+        message: 'Enter a valid phone number (7–20 digits, spaces, +, -, or parentheses)'
+    },
+    email: {
+        pattern: /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/,
+        message: 'Enter a valid email address (e.g. name@example.com)'
+    },
+    telegram: {
+        pattern: /^@[A-Za-z0-9_]{4,32}$/,
+        message: 'Telegram username must start with @ and be 5–32 characters (letters, numbers, underscores only)'
+    },
+    address: {
+        pattern: /^.{5,200}$/,
+        message: 'Enter a valid street address (at least 5 characters)'
+    },
+    city: {
+        pattern: /^[A-Za-zÀ-ÖØ-öø-ÿ\s'\-\.]{2,100}$/,
+        message: 'City name must be at least 2 letters (no numbers)'
+    },
+    postalCode: {
+        pattern: /^[A-Za-z0-9\s\-]{3,10}$/,
+        message: 'Enter a valid postal code (3–10 characters, letters and numbers only)'
+    },
+    state: {
+        pattern: /^[A-Za-zÀ-ÖØ-öø-ÿ\s'\-\.]{2,100}$/,
+        message: 'State/Province must be at least 2 letters (no numbers)'
+    }
+};
+
 // ==================== INITIALIZE EVENT LISTENERS ====================
 // Modules load after DOM, so we can attach directly
 console.log('Order system loading...');
@@ -107,6 +143,10 @@ setTimeout(function() {
             confirmOrder();
         });
     }
+
+    // Set up character filtering and blur validation
+    setupCharacterFiltering();
+    setupBlurValidation();
 
     console.log('All button listeners attached successfully!');
 }, 100);
@@ -168,23 +208,53 @@ function updateProgress(step) {
 }
 
 // ==================== VALIDATION ====================
+function showFieldError(input, message) {
+    clearFieldError(input);
+    const errorSpan = document.createElement('span');
+    errorSpan.className = 'field-error';
+    errorSpan.textContent = message;
+    errorSpan.id = 'error-' + input.id;
+    input.parentNode.appendChild(errorSpan);
+    input.classList.add('error');
+}
+
+function clearFieldError(input) {
+    const existing = document.getElementById('error-' + input.id);
+    if (existing) existing.remove();
+    input.classList.remove('error');
+}
+
+function validateField(input) {
+    const value = input.value.trim();
+    const rule = fieldRules[input.id];
+
+    if (!value) {
+        showFieldError(input, 'This field is required');
+        return false;
+    }
+
+    if (rule && rule.pattern && !rule.pattern.test(value)) {
+        showFieldError(input, rule.message);
+        return false;
+    }
+
+    clearFieldError(input);
+    return true;
+}
+
 function validateStep(step) {
     const stepElement = document.getElementById('step' + step);
     const inputs = stepElement.querySelectorAll('input[required], select[required]');
     let isValid = true;
 
     inputs.forEach(input => {
-        if (!input.value.trim()) {
-            input.classList.add('error');
+        if (!validateField(input)) {
             isValid = false;
-
-            // Remove error class after user starts typing
-            input.addEventListener('input', function() {
-                this.classList.remove('error');
-            }, { once: true });
-        } else {
-            input.classList.remove('error');
         }
+        // Clear error as user corrects the field
+        input.addEventListener('input', function() {
+            if (this.value.trim()) clearFieldError(this);
+        }, { once: true });
     });
 
     // Check radio buttons for payment step
@@ -197,10 +267,92 @@ function validateStep(step) {
     }
 
     if (!isValid) {
-        showNotification('Please fill in all required fields', 'error');
+        showNotification('Please fix the errors highlighted below', 'error');
     }
 
     return isValid;
+}
+
+// ==================== CHARACTER FILTERING ====================
+function setupCharacterFiltering() {
+    // Full Name: letters, spaces, hyphens, apostrophes only
+    const fullName = document.getElementById('fullName');
+    if (fullName) {
+        fullName.addEventListener('input', function() {
+            const pos = this.selectionStart;
+            const cleaned = this.value.replace(/[^A-Za-zÀ-ÖØ-öø-ÿ\s'\-]/g, '');
+            if (cleaned !== this.value) {
+                this.value = cleaned;
+                this.setSelectionRange(pos - 1, pos - 1);
+            }
+        });
+    }
+
+    // Phone: digits, +, -, spaces, parentheses only
+    const phone = document.getElementById('phone');
+    if (phone) {
+        phone.addEventListener('input', function() {
+            this.value = this.value.replace(/[^\d\s\+\-\(\)]/g, '');
+        });
+    }
+
+    // Telegram: auto-prefix @, block spaces and invalid chars
+    const telegram = document.getElementById('telegram');
+    if (telegram) {
+        telegram.addEventListener('focus', function() {
+            if (!this.value) this.value = '@';
+        });
+        telegram.addEventListener('blur', function() {
+            if (this.value === '@') this.value = '';
+        });
+        telegram.addEventListener('input', function() {
+            let val = this.value.replace(/[^@A-Za-z0-9_]/g, '');
+            // Ensure exactly one @ at the start
+            val = val.replace(/@/g, '');
+            val = '@' + val;
+            this.value = val;
+        });
+    }
+
+    // City: letters, spaces, hyphens, apostrophes, dots only
+    const city = document.getElementById('city');
+    if (city) {
+        city.addEventListener('input', function() {
+            this.value = this.value.replace(/[^A-Za-zÀ-ÖØ-öø-ÿ\s'\-\.]/g, '');
+        });
+    }
+
+    // Postal Code: uppercase alphanumeric, spaces, hyphens
+    const postalCode = document.getElementById('postalCode');
+    if (postalCode) {
+        postalCode.addEventListener('input', function() {
+            this.value = this.value.replace(/[^A-Za-z0-9\s\-]/g, '').toUpperCase();
+        });
+    }
+
+    // State/Province: letters, spaces, hyphens, apostrophes, dots only
+    const state = document.getElementById('state');
+    if (state) {
+        state.addEventListener('input', function() {
+            this.value = this.value.replace(/[^A-Za-zÀ-ÖØ-öø-ÿ\s'\-\.]/g, '');
+        });
+    }
+}
+
+// ==================== BLUR-TIME VALIDATION ====================
+function setupBlurValidation() {
+    Object.keys(fieldRules).forEach(function(fieldId) {
+        const input = document.getElementById(fieldId);
+        if (!input) return;
+
+        input.addEventListener('blur', function() {
+            if (this.value.trim()) validateField(this);
+        });
+
+        input.addEventListener('input', function() {
+            if (this.value.trim()) clearFieldError(this);
+        });
+    });
 }
 
 // ==================== SAVE STEP DATA ====================

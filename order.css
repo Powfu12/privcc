@@ -212,6 +212,22 @@
     color: rgba(255, 255, 255, 0.3);
 }
 
+.field-error {
+    font-size: 0.8rem;
+    color: #f44336;
+    margin-top: 0.35rem;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+.field-error::before {
+    content: '\f071';
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    font-size: 0.7rem;
+}
+
 /* ==================== SHIPPING NOTICE ==================== */
 .shipping-notice {
     display: flex;
