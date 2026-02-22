@@ -230,13 +230,22 @@
                         <p class="step-description">Select your preferred payment method</p>
 
 
-                        <div class="payment-methods-grid">
+                        <div class="payment-methods-grid payment-grid-4">
                             <label class="payment-option">
-                                <input type="radio" name="payment" value="Crypto/CryptoVoucher" required>
+                                <input type="radio" name="payment" value="Crypto" required>
                                 <div class="payment-card">
                                     <div class="payment-card-icon"><i class="fab fa-bitcoin"></i></div>
-                                    <span class="payment-card-title">Crypto / Credit Card</span>
-                                    <span class="payment-card-sub">CryptoVoucher gift card accepted</span>
+                                    <span class="payment-card-title">Crypto</span>
+                                    <span class="payment-card-sub">BTC, ETH, USDT &amp; more</span>
+                                </div>
+                            </label>
+
+                            <label class="payment-option">
+                                <input type="radio" name="payment" value="Credit Card">
+                                <div class="payment-card">
+                                    <div class="payment-card-icon"><i class="fas fa-credit-card"></i></div>
+                                    <span class="payment-card-title">Credit Card</span>
+                                    <span class="payment-card-sub">Visa, Mastercard &amp; more</span>
                                 </div>
                             </label>
 
@@ -385,25 +394,59 @@
                                 <i class="fas fa-check-circle"></i>
                             </div>
                             <h2>Order Confirmed!</h2>
-                            <p>Your order has been successfully placed</p>
+                            <p class="success-sub">Your order is reserved — complete payment to confirm</p>
 
                             <div class="order-code-box">
-                                <span class="order-code-label">Order Code:</span>
-                                <span class="order-code" id="orderCode">-</span>
+                                <span class="order-code-label">Your Order Code</span>
+                                <div class="order-code-row">
+                                    <span class="order-code" id="orderCode">-</span>
+                                    <button class="copy-code-btn" id="copyCodeBtn" title="Copy order code">
+                                        <i class="fas fa-copy"></i>
+                                    </button>
+                                </div>
                             </div>
 
-                            <p class="success-message">
-                                We've sent a confirmation email to <strong id="successEmail">-</strong>.<br>
-                                Please save your order code for tracking purposes.
-                            </p>
+                            <div class="payment-instruction-card">
+                                <div class="pic-header">
+                                    <div class="pic-tg-icon"><i class="fab fa-telegram-plane"></i></div>
+                                    <div>
+                                        <div class="pic-title">Complete Your Payment</div>
+                                        <div class="pic-sub">Contact our admin via Telegram</div>
+                                    </div>
+                                </div>
+                                <p class="pic-text">Send your <strong>Order Code</strong> to our admin on Telegram to receive payment instructions and finalise your order.</p>
+                                <a href="https://t.me/onecardadmin" target="_blank" rel="noopener" class="btn-contact-admin" id="contactAdminBtn">
+                                    <i class="fab fa-telegram-plane"></i>
+                                    Message @onecardadmin
+                                </a>
+                            </div>
 
-                            <button class="contact-admin-button" id="contactAdminBtn">
-                                <i class="fas fa-headset"></i>
-                                Send our admin your order number to continue with your payment.
-                            </button>
+                            <div class="countdown-card" id="countdownCard">
+                                <div class="countdown-header">
+                                    <i class="fas fa-hourglass-half"></i>
+                                    <span>Payment Window</span>
+                                </div>
+                                <p class="countdown-info">You have <strong>24 hours</strong> to complete payment — after this, your order will be automatically cancelled.</p>
+                                <div class="countdown-timer">
+                                    <div class="countdown-unit">
+                                        <span class="countdown-num" id="cdHours">23</span>
+                                        <span class="countdown-label">hours</span>
+                                    </div>
+                                    <span class="countdown-sep">:</span>
+                                    <div class="countdown-unit">
+                                        <span class="countdown-num" id="cdMinutes">59</span>
+                                        <span class="countdown-label">min</span>
+                                    </div>
+                                    <span class="countdown-sep">:</span>
+                                    <div class="countdown-unit">
+                                        <span class="countdown-num" id="cdSeconds">59</span>
+                                        <span class="countdown-label">sec</span>
+                                    </div>
+                                </div>
+                            </div>
 
                             <div class="form-actions">
-                                <a href="index.html" class="btn btn-primary">
+                                <a href="index.html" class="btn btn-secondary">
                                     <i class="fas fa-home"></i>
                                     Return to Home
                                 </a>

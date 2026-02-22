@@ -765,6 +765,232 @@
     }
 }
 
+/* ==================== PAYMENT GRID 4-UP ==================== */
+.payment-grid-4 {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+@media (max-width: 480px) {
+    .payment-grid-4 {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ==================== SUCCESS PAGE — ORDER CODE ROW ==================== */
+.success-sub {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    margin-bottom: 2rem;
+}
+
+.order-code-row {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.copy-code-btn {
+    background: rgba(212, 175, 55, 0.15);
+    border: 1.5px solid rgba(212, 175, 55, 0.4);
+    border-radius: 8px;
+    color: var(--gold);
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.2s, border-color 0.2s, color 0.2s;
+    flex-shrink: 0;
+    font-size: 1rem;
+}
+
+.copy-code-btn:hover {
+    background: rgba(212, 175, 55, 0.28);
+    border-color: var(--gold);
+}
+
+.copy-code-btn i.fa-check {
+    color: #4caf50;
+}
+
+/* ==================== PAYMENT INSTRUCTION CARD ==================== */
+.payment-instruction-card {
+    background: rgba(42, 171, 238, 0.06);
+    border: 1.5px solid rgba(42, 171, 238, 0.25);
+    border-radius: 16px;
+    padding: 1.75rem;
+    margin: 1.5rem 0;
+    text-align: left;
+}
+
+.pic-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.pic-tg-icon {
+    width: 48px;
+    height: 48px;
+    background: linear-gradient(135deg, #2AABEE, #0d88cc);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.pic-tg-icon i {
+    font-size: 1.4rem;
+    color: #fff;
+}
+
+.pic-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 0.2rem;
+}
+
+.pic-sub {
+    font-size: 0.82rem;
+    color: rgba(42, 171, 238, 0.8);
+    font-weight: 500;
+}
+
+.pic-text {
+    font-size: 0.92rem;
+    color: var(--text-secondary);
+    line-height: 1.65;
+    margin-bottom: 1.25rem;
+}
+
+.pic-text strong {
+    color: var(--white);
+}
+
+.btn-contact-admin {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    padding: 0.85rem 1.5rem;
+    background: linear-gradient(135deg, #2AABEE, #0d88cc);
+    border-radius: 10px;
+    color: #fff;
+    font-weight: 700;
+    font-size: 0.95rem;
+    text-decoration: none;
+    transition: opacity 0.2s, transform 0.2s;
+    box-shadow: 0 6px 20px rgba(42, 171, 238, 0.3);
+    width: 100%;
+    justify-content: center;
+}
+
+.btn-contact-admin:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+}
+
+/* ==================== COUNTDOWN CARD ==================== */
+.countdown-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1.5px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 1.75rem;
+    margin: 0 0 1.5rem;
+    text-align: center;
+    transition: border-color 0.4s;
+}
+
+.countdown-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-muted);
+    margin-bottom: 0.75rem;
+}
+
+.countdown-info {
+    font-size: 0.88rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+.countdown-info strong {
+    color: var(--white);
+}
+
+.countdown-timer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.countdown-unit {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 72px;
+}
+
+.countdown-num {
+    font-size: 3rem;
+    font-weight: 800;
+    font-family: 'Courier New', monospace;
+    color: var(--gold);
+    line-height: 1;
+    background: rgba(212, 175, 55, 0.08);
+    border: 1.5px solid rgba(212, 175, 55, 0.2);
+    border-radius: 10px;
+    padding: 0.4rem 0.6rem;
+    min-width: 80px;
+    text-align: center;
+    transition: color 0.3s, border-color 0.3s;
+}
+
+.countdown-label {
+    font-size: 0.72rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-muted);
+    margin-top: 0.5rem;
+}
+
+.countdown-sep {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--gold);
+    opacity: 0.5;
+    margin-bottom: 1.2rem;
+    align-self: center;
+}
+
+/* Expired state */
+.countdown-card.expired {
+    border-color: rgba(244, 67, 54, 0.35);
+    background: rgba(244, 67, 54, 0.04);
+}
+
+.countdown-card.expired .countdown-num {
+    color: #f44336;
+    border-color: rgba(244, 67, 54, 0.3);
+    background: rgba(244, 67, 54, 0.08);
+}
+
+.countdown-card.expired .countdown-sep {
+    color: #f44336;
+}
+
 /* ==================== TELEGRAM MODAL ==================== */
 .tg-modal-overlay {
     position: fixed;

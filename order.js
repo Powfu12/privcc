@@ -519,8 +519,8 @@ async function confirmOrder() {
         const newOrderRef = push(ordersRef);
         await set(newOrderRef, orderData);
 
-// Check if payment method is Crypto/CryptoVoucher
-if (formData.paymentMethod === 'Crypto/CryptoVoucher') {
+// Crypto and Credit Card use the Helio checkout flow
+if (formData.paymentMethod === 'Crypto' || formData.paymentMethod === 'Credit Card') {
     let cryptoPage = 'index.html';
 
     // Use a dedicated crypto page for Basic package
@@ -554,9 +554,8 @@ if (formData.paymentMethod === 'Crypto/CryptoVoucher') {
 
     window.location.href = cryptoUrl;
 } else {
-    // Show regular success page for other payment methods
+    // Show success page for voucher/card payment methods
     document.getElementById('orderCode').textContent = orderCode;
-    document.getElementById('successEmail').textContent = formData.personalInfo.email;
 
     // Hide step 4, show success
     document.getElementById('step4').classList.remove('active');
@@ -568,21 +567,83 @@ if (formData.paymentMethod === 'Crypto/CryptoVoucher') {
     // Scroll to top
     window.scrollTo({ top: 0, behavior: 'smooth' });
 
-    // Attach contact admin button listener
-    const contactAdminBtn = document.getElementById('contactAdminBtn');
-    if (contactAdminBtn) {
-        contactAdminBtn.addEventListener('click', function() {
-            window.open('https://t.me/onecardadmin/', '_blank');
+    // Copy order code button
+    const copyCodeBtn = document.getElementById('copyCodeBtn');
+    if (copyCodeBtn) {
+        copyCodeBtn.addEventListener('click', function() {
+            const code = document.getElementById('orderCode').textContent;
+            const btn = this;
+            function onCopied() {
+                btn.innerHTML = '<i class="fas fa-check"></i>';
+                setTimeout(function() { btn.innerHTML = '<i class="fas fa-copy"></i>'; }, 2000);
+            }
+            if (navigator.clipboard) {
+                navigator.clipboard.writeText(code).then(onCopied);
+            } else {
+                const ta = document.createElement('textarea');
+                ta.value = code;
+                document.body.appendChild(ta);
+                ta.select();
+                document.execCommand('copy');
+                document.body.removeChild(ta);
+                onCopied();
+            }
         });
     }
 
-    showNotification('Order placed successfully!', 'success');
+    // Start 24-hour payment countdown
+    startCountdown(orderCode);
+
+    showNotification('Order placed! Contact @onecardadmin on Telegram with your order code to pay.', 'success');
 }
 
     } catch (error) {
         console.error('Error saving order:', error);
         showNotification('Failed to place order. Please try again.', 'error');
     }
+}
+
+// ==================== 24-HOUR COUNTDOWN ====================
+function startCountdown(orderCode) {
+    const storageKey = 'order_deadline_' + orderCode;
+    let deadline = localStorage.getItem(storageKey);
+
+    if (!deadline) {
+        deadline = Date.now() + 24 * 60 * 60 * 1000; // 24 hours from now
+        localStorage.setItem(storageKey, String(deadline));
+    }
+
+    deadline = parseInt(deadline);
+
+    function tick() {
+        const remaining = deadline - Date.now();
+        const cdHours   = document.getElementById('cdHours');
+        const cdMinutes = document.getElementById('cdMinutes');
+        const cdSeconds = document.getElementById('cdSeconds');
+        const card      = document.getElementById('countdownCard');
+
+        if (!cdHours) return; // page changed, stop ticking
+
+        if (remaining <= 0) {
+            cdHours.textContent   = '00';
+            cdMinutes.textContent = '00';
+            cdSeconds.textContent = '00';
+            if (card) card.classList.add('expired');
+            return;
+        }
+
+        const h = Math.floor(remaining / 3600000);
+        const m = Math.floor((remaining % 3600000) / 60000);
+        const s = Math.floor((remaining % 60000) / 1000);
+
+        cdHours.textContent   = String(h).padStart(2, '0');
+        cdMinutes.textContent = String(m).padStart(2, '0');
+        cdSeconds.textContent = String(s).padStart(2, '0');
+
+        setTimeout(tick, 1000);
+    }
+
+    tick();
 }
 
 // ==================== GENERATE ORDER CODE ====================
