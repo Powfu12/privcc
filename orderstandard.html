@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Order your 1Card - Secure checkout process">
+    <title>Order 1Card - Secure Checkout</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- CSS Link -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="order.css">
+</head>
+<body>
+    <!-- ==================== NAVIGATION ==================== -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="navbar-logo">
+                <a href="index.html">1CARD</a>
+                <span class="logo-badge">Verified</span>
+            </div>
+
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">
+                    <i class="fas fa-arrow-left"></i>
+                    <span>Back to Home</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ==================== ORDER SECTION ==================== -->
+    <section class="order-section">
+        <div class="container">
+            <div class="order-header">
+                <h1>Secure Checkout</h1>
+                <p>Complete your order for the <span class="text-gradient">Standard Package</span></p>
+            </div>
+
+            <!-- Progress Bar -->
+            <div class="progress-container">
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+                <div class="progress-steps">
+                    <div class="progress-step active" data-step="1">
+                        <div class="step-circle">1</div>
+                        <span>Personal Info</span>
+                    </div>
+                    <div class="progress-step" data-step="2">
+                        <div class="step-circle">2</div>
+                        <span>Shipping</span>
+                    </div>
+                    <div class="progress-step" data-step="3">
+                        <div class="step-circle">3</div>
+                        <span>Payment</span>
+                    </div>
+                    <div class="progress-step" data-step="4">
+                        <div class="step-circle">4</div>
+                        <span>Confirm</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Order Form -->
+            <div class="order-form-container">
+                <form id="orderForm">
+
+                    <!-- Step 1: Personal Information -->
+                    <div class="form-step active" id="step1">
+                        <h2 class="step-title">Personal Information</h2>
+                        <p class="step-description">Please provide your contact details</p>
+
+                        <div class="form-grid">
+                            <div class="form-group full-width">
+                                <label for="fullName">
+                                    <i class="fas fa-user"></i>
+                                    Full Name
+                                </label>
+                                <input type="text" id="fullName" name="fullName" required placeholder="John Doe">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="phone">
+                                    <i class="fas fa-phone"></i>
+                                    Phone Number
+                                </label>
+                                <input type="tel" id="phone" name="phone" required placeholder="+1 234 567 8900">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="email">
+                                    <i class="fas fa-envelope"></i>
+                                    Email Address
+                                </label>
+                                <input type="email" id="email" name="email" required placeholder="john@example.com">
+                            </div>
+
+                            <div class="form-group full-width">
+                                <label for="telegram">
+                                    <i class="fab fa-telegram"></i>
+                                    Telegram Username
+                                </label>
+                                <input type="text" id="telegram" name="telegram" required placeholder="@johndoe">
+                            </div>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="button" class="btn btn-primary" data-next-step="2">
+                                Continue to Shipping
+                                <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Step 2: Shipping Information -->
+                    <div class="form-step" id="step2">
+                        <h2 class="step-title">Shipping Information</h2>
+                        <p class="step-description">Standard Shipping - €20.00</p>
+
+                        <div class="shipping-notice">
+                            <i class="fas fa-truck"></i>
+                            <div>
+                                <strong>Standard Shipping</strong>
+                                <p>Delivery in 5-7 business days</p>
+                            </div>
+                            <span class="shipping-price">€20.00</span>
+                        </div>
+
+                        <div class="form-grid">
+                            <div class="form-group full-width">
+                                <label for="address">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    Street Address
+                                </label>
+                                <input type="text" id="address" name="address" required placeholder="123 Main Street">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="city">
+                                    <i class="fas fa-city"></i>
+                                    City
+                                </label>
+                                <input type="text" id="city" name="city" required placeholder="New York">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="postalCode">
+                                    <i class="fas fa-mail-bulk"></i>
+                                    Postal Code
+                                </label>
+                                <input type="text" id="postalCode" name="postalCode" required placeholder="10001">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="state">
+                                    <i class="fas fa-map"></i>
+                                    State/Province
+                                </label>
+                                <input type="text" id="state" name="state" required placeholder="NY">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="country">
+                                    <i class="fas fa-globe"></i>
+                                    Country
+                                </label>
+                                <input type="text" id="country" name="country" required placeholder="United States">
+                            </div>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="button" class="btn btn-secondary" data-prev-step="1">
+                                <i class="fas fa-arrow-left"></i>
+                                Back
+                            </button>
+                            <button type="button" class="btn btn-primary" data-next-step="3">
+                                Continue to Payment
+                                <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Step 3: Payment Method -->
+                    <div class="form-step" id="step3">
+                        <h2 class="step-title">Payment Method</h2>
+                        <p class="step-description">Select your preferred payment method</p>
+
+
+                        <div class="payment-methods-grid">
+                            <label class="payment-option">
+                                <input type="radio" name="payment" value="Crypto" required>
+                                <div class="payment-card">
+                                    <i class="fa fa-university"></i>
+                                    <span>Crypto, Creditcard, Bank, PayPal or RevolutPay</span>
+                                </div>
+                            </label>
+
+                            <label class="payment-option">
+                                <input type="radio" name="payment" value="Paysafecard or Cryptovoucher" required>
+                                <div class="payment-card">
+                                    <i class="fa fa-gift"></i>
+                                    <span>Paysafecard or Cryptovoucher</span>
+                                </div>
+                            </label>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="button" class="btn btn-secondary" data-prev-step="2">
+                                <i class="fas fa-arrow-left"></i>
+                                Back
+                            </button>
+                            <button type="button" class="btn btn-primary" data-next-step="4">
+                                Review Order
+                                <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Step 4: Confirmation -->
+                    <div class="form-step" id="step4">
+                        <h2 class="step-title">Order Confirmation</h2>
+                        <p class="step-description">Please review your order details</p>
+
+                        <div class="confirmation-container">
+                            <!-- Personal Info Summary -->
+                            <div class="summary-section">
+                                <h3><i class="fas fa-user"></i> Personal Information</h3>
+                                <div class="summary-grid">
+                                    <div class="summary-item">
+                                        <span class="label">Name:</span>
+                                        <span class="value" id="confirmName">-</span>
+                                    </div>
+                                    <div class="summary-item">
+                                        <span class="label">Phone:</span>
+                                        <span class="value" id="confirmPhone">-</span>
+                                    </div>
+                                    <div class="summary-item">
+                                        <span class="label">Email:</span>
+                                        <span class="value" id="confirmEmail">-</span>
+                                    </div>
+                                    <div class="summary-item">
+                                        <span class="label">Telegram:</span>
+                                        <span class="value" id="confirmTelegram">-</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Shipping Info Summary -->
+                            <div class="summary-section">
+                                <h3><i class="fas fa-truck"></i> Shipping Address</h3>
+                                <div class="summary-grid">
+                                    <div class="summary-item full-width">
+                                        <span class="label">Address:</span>
+                                        <span class="value" id="confirmAddress">-</span>
+                                    </div>
+                                    <div class="summary-item">
+                                        <span class="label">City:</span>
+                                        <span class="value" id="confirmCity">-</span>
+                                    </div>
+                                    <div class="summary-item">
+                                        <span class="label">Postal Code:</span>
+                                        <span class="value" id="confirmPostal">-</span>
+                                    </div>
+                                    <div class="summary-item">
+                                        <span class="label">State:</span>
+                                        <span class="value" id="confirmState">-</span>
+                                    </div>
+                                    <div class="summary-item">
+                                        <span class="label">Country:</span>
+                                        <span class="value" id="confirmCountry">-</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Payment Summary -->
+                            <div class="summary-section">
+                                <h3><i class="fas fa-credit-card"></i> Payment Method</h3>
+                                <div class="summary-grid">
+                                    <div class="summary-item full-width">
+                                        <span class="value" id="confirmPayment">-</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Price Summary -->
+                            <div class="price-summary">
+                                <div class="price-row">
+                                    <span>Standard Package:</span>
+                                    <span>€150.00</span>
+                                </div>
+                                <div class="price-row">
+                                    <span>Standard Shipping:</span>
+                                    <span>€20.00</span>
+                                </div>
+                                <div class="price-row total">
+                                    <span>Total:</span>
+                                    <span>€170.00</span>
+                                </div>
+                            </div>
+
+                            <!-- Pay on Delivery Option -->
+                            <div class="pay-on-delivery-section">
+                                <label class="pay-on-delivery-checkbox">
+                                    <input type="checkbox" id="payOnDelivery" name="payOnDelivery">
+                                    <span class="checkbox-custom"></span>
+                                    <div class="checkbox-content">
+                                        <strong>Pay on delivery</strong>
+                                        <p>Check this option to pay only €20 for shipping now and the remaining balance upon delivery</p>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="button" class="btn btn-secondary" data-prev-step="3">
+                                <i class="fas fa-arrow-left"></i>
+                                Back
+                            </button>
+                            <button type="button" class="btn btn-gold" data-confirm-order="true">
+                                <i class="fas fa-check"></i>
+                                Confirm Order
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Success Message -->
+                    <div class="form-step" id="stepSuccess">
+                        <div class="success-container">
+                            <div class="success-icon">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <h2>Order Confirmed!</h2>
+                            <p>Your order has been successfully placed</p>
+
+                            <div class="order-code-box">
+                                <span class="order-code-label">Order Code:</span>
+                                <span class="order-code" id="orderCode">-</span>
+                            </div>
+
+                            <p class="success-message">
+                                We've sent a confirmation email to <strong id="successEmail">-</strong>.
+                                <br>Please save your order code for tracking purposes.
+
+<button class="contact-admin-button"
+        onclick="window.open('https://t.me/onecardadmin/', '_blank')">
+    <i class="fas fa-headset"></i>
+    Send our admin your order number to continue with your payment.
+</button>
+                            </p>
+
+
+                              
+<style>
+          .contact-admin-button {
+            background: linear-gradient(135deg, #f4433673 0%, #d32f2f8e 100%);
+            color: white;
+            border: none;
+            padding: 1.5rem 3rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            width: 100%;
+            margin: 1rem 0;
+        }
+
+        .contact-admin-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(244, 67, 54, 0.4);
+        }
+
+        </style>
+
+                            </p>
+
+                            <div class="form-actions">
+                                <a href="index.html" class="btn btn-primary">
+                                    <i class="fas fa-home"></i>
+                                    Return to Home
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+
+            <!-- Security Badge -->
+            <div class="security-notice">
+                <i class="fas fa-shield-alt"></i>
+                <span>Your information is secured with 256-bit SSL encryption</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>© 2026 1Card. All rights reserved. | Secure | Trusted | Professional</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Firebase -->
+    <script type="module" src="./order.js"></script>
+</body>
+</html>

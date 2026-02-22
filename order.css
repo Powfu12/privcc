@@ -1,0 +1,684 @@
+
+.order-section {
+    min-height: 100vh;
+    padding: 120px 0 4rem;
+    background: var(--black);
+}
+
+.order-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.order-header h1 {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 800;
+    margin-bottom: 1rem;
+    color: var(--white);
+}
+
+.order-header p {
+    font-size: 1.125rem;
+    color: var(--text-secondary);
+}
+
+/* ==================== PROGRESS BAR ==================== */
+.progress-container {
+    max-width: 800px;
+    margin: 0 auto 4rem;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 2rem;
+}
+
+.progress-fill {
+    height: 100%;
+    background: var(--gradient-gold);
+    width: 0%;
+    transition: width 0.5s ease;
+    border-radius: 10px;
+}
+
+.progress-steps {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+}
+
+.progress-step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    flex: 1;
+    opacity: 0.4;
+    transition: opacity 0.3s;
+}
+
+.progress-step.active {
+    opacity: 1;
+}
+
+.step-circle {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(212, 175, 55, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 1.25rem;
+    color: var(--white);
+    transition: all 0.3s;
+}
+
+.progress-step.active .step-circle {
+    background: var(--gradient-gold);
+    border-color: var(--gold);
+    color: var(--black);
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+}
+
+.progress-step span {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    text-align: center;
+}
+
+.progress-step.active span {
+    color: var(--gold);
+}
+
+/* ==================== FORM CONTAINER ==================== */
+.order-form-container {
+    max-width: 800px;
+    margin: 0 auto;
+    background: rgba(26, 26, 26, 0.5);
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    border-radius: 20px;
+    padding: 3rem;
+    backdrop-filter: blur(10px);
+}
+
+.form-step {
+    display: none;
+}
+
+.form-step.active {
+    display: block;
+    animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.step-title {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: var(--white);
+}
+
+.step-description {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    margin-bottom: 2.5rem;
+}
+
+/* ==================== FORM ELEMENTS ==================== */
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.form-group.full-width {
+    grid-column: 1 / -1;
+}
+
+.form-group label {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.form-group label i {
+    color: var(--gold);
+}
+
+.form-group input {
+    padding: 1rem 1.25rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    color: var(--white);
+    font-size: 1rem;
+    transition: all 0.3s;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: var(--gold);
+    background: rgba(255, 255, 255, 0.08);
+    box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
+}
+
+.form-group input::placeholder {
+    color: rgba(255, 255, 255, 0.3);
+}
+
+/* ==================== SHIPPING NOTICE ==================== */
+.shipping-notice {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 1.5rem;
+    background: rgba(212, 175, 55, 0.1);
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    border-radius: 12px;
+    margin-bottom: 2rem;
+}
+
+.shipping-notice i {
+    font-size: 2rem;
+    color: var(--gold);
+}
+
+.shipping-notice div {
+    flex: 1;
+}
+
+.shipping-notice strong {
+    display: block;
+    font-size: 1.125rem;
+    color: var(--white);
+    margin-bottom: 0.25rem;
+}
+
+.shipping-notice p {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    margin: 0;
+}
+
+.shipping-price {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--gold);
+}
+
+/* ==================== PAYMENT METHODS GRID ==================== */
+.payment-methods-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+}
+
+.payment-option {
+    cursor: pointer;
+}
+
+.payment-option input[type="radio"] {
+    display: none;
+}
+
+.payment-card {
+    padding: 2rem 1.5rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    text-align: center;
+    transition: all 0.3s;
+    cursor: pointer;
+}
+
+.payment-card i {
+    font-size: 2.5rem;
+    color: var(--gold);
+    margin-bottom: 1rem;
+    display: block;
+}
+
+.payment-card span {
+    display: block;
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: var(--white);
+}
+
+.payment-option:hover .payment-card {
+    background: rgba(212, 175, 55, 0.05);
+    border-color: rgba(212, 175, 55, 0.3);
+    transform: translateY(-4px);
+}
+
+.payment-option input[type="radio"]:checked + .payment-card {
+    background: rgba(212, 175, 55, 0.1);
+    border-color: var(--gold);
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+}
+
+/* ==================== CONFIRMATION PAGE ==================== */
+.confirmation-container {
+    margin-bottom: 2.5rem;
+}
+
+.summary-section {
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    margin-bottom: 1.5rem;
+}
+
+.summary-section h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.summary-section h3 i {
+    color: var(--gold);
+}
+
+.summary-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+}
+
+.summary-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.summary-item.full-width {
+    grid-column: 1 / -1;
+}
+
+.summary-item .label {
+    font-size: 0.8125rem;
+    color: var(--text-muted);
+    font-weight: 500;
+}
+
+.summary-item .value {
+    font-size: 1rem;
+    color: var(--white);
+    font-weight: 600;
+}
+
+.price-summary {
+    padding: 2rem;
+    background: rgba(212, 175, 55, 0.05);
+    border: 2px solid var(--gold);
+    border-radius: 12px;
+}
+
+.price-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 0;
+    color: var(--white);
+    font-size: 1rem;
+}
+
+.price-row:not(:last-child) {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.price-row.total {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--gold);
+    padding-top: 1.25rem;
+    margin-top: 0.5rem;
+}
+
+/* ==================== FORM ACTIONS ==================== */
+.form-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: space-between;
+}
+
+.form-actions .btn {
+    flex: 1;
+}
+
+.form-actions .btn-secondary {
+    flex: 0 0 auto;
+    min-width: 150px;
+}
+
+/* ==================== SUCCESS PAGE ==================== */
+.success-container {
+    text-align: center;
+    padding: 3rem 2rem;
+}
+
+.success-icon {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto 2rem;
+    background: var(--gradient-gold);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: scaleIn 0.5s ease;
+}
+
+@keyframes scaleIn {
+    from {
+        transform: scale(0);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.success-icon i {
+    font-size: 3rem;
+    color: var(--black);
+}
+
+.success-container h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 1rem;
+}
+
+.success-container > p {
+    font-size: 1.125rem;
+    color: var(--text-secondary);
+    margin-bottom: 2rem;
+}
+
+.order-code-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    padding: 2rem;
+    background: rgba(212, 175, 55, 0.1);
+    border: 2px solid var(--gold);
+    border-radius: 12px;
+    margin: 2rem 0;
+}
+
+.order-code-label {
+    font-size: 0.875rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+.order-code {
+    font-size: 1.75rem;
+    font-weight: 700;
+    font-family: 'Courier New', monospace;
+    color: var(--gold);
+    letter-spacing: 0.05em;
+}
+
+.success-message {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    line-height: 1.8;
+    margin-bottom: 2rem;
+}
+
+.success-message strong {
+    color: var(--white);
+}
+
+/* ==================== SECURITY NOTICE ==================== */
+.security-notice {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    margin-top: 3rem;
+    padding: 1rem;
+    color: var(--text-muted);
+    font-size: 0.875rem;
+}
+
+.security-notice i {
+    color: var(--gold);
+    font-size: 1.25rem;
+}
+
+/* ==================== RESPONSIVE DESIGN ==================== */
+@media (max-width: 768px) {
+    .order-section {
+        padding: 100px 0 3rem;
+    }
+
+    .order-form-container {
+        padding: 2rem 1.5rem;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .progress-steps {
+        gap: 0.5rem;
+    }
+
+    .progress-step span {
+        font-size: 0.75rem;
+    }
+
+    .step-circle {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+    }
+
+    .payment-methods-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+
+    .payment-card {
+        padding: 1.5rem 1rem;
+    }
+
+    .payment-card i {
+        font-size: 2rem;
+    }
+
+    .summary-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .form-actions {
+        flex-direction: column;
+    }
+
+    .form-actions .btn-secondary {
+        min-width: 100%;
+    }
+
+    .step-title {
+        font-size: 1.5rem;
+    }
+
+    .shipping-notice {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .order-code {
+        font-size: 1.25rem;
+    }
+}
+
+/* ==================== PAY ON DELIVERY STYLES ==================== */
+.pay-on-delivery-section {
+    margin: 2rem 0;
+    padding: 1.5rem;
+    background: rgba(212, 175, 55, 0.1);
+    border: 2px solid rgba(212, 175, 55, 0.3);
+    border-radius: 12px;
+    transition: all 0.3s ease;
+}
+
+.pay-on-delivery-section:hover {
+    border-color: var(--gold);
+    background: rgba(212, 175, 55, 0.15);
+}
+
+.pay-on-delivery-checkbox {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    cursor: pointer;
+    user-select: none;
+}
+
+.pay-on-delivery-checkbox input[type="checkbox"] {
+    display: none;
+}
+
+.checkbox-custom {
+    width: 24px;
+    height: 24px;
+    border: 2px solid var(--gold);
+    border-radius: 6px;
+    background: transparent;
+    position: relative;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+.checkbox-custom::after {
+    content: '\f00c';
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    color: var(--black);
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+.pay-on-delivery-checkbox input[type="checkbox"]:checked + .checkbox-custom {
+    background: var(--gradient-gold);
+    border-color: var(--gold);
+}
+
+.pay-on-delivery-checkbox input[type="checkbox"]:checked + .checkbox-custom::after {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.checkbox-content {
+    flex: 1;
+}
+
+.checkbox-content strong {
+    color: var(--white);
+    font-size: 1.125rem;
+    font-weight: 600;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.checkbox-content p {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* Price modification styles */
+.price-crossed {
+    text-decoration: line-through;
+    color: var(--text-secondary);
+    font-size: 0.9em;
+    margin-left: 0.5rem;
+}
+
+.price-modified {
+    text-decoration: line-through !important;
+    color: var(--text-secondary) !important;
+    font-weight: 400 !important;
+}
+
+
+.price-sex {
+    text-decoration: !important;
+    color: var(--text-primar) !important;
+    font-weight: 400 !important;
+}
+
+.price-highlight {
+    color: var(--gold) !important;
+    font-weight: 700 !important;
+}
+
+@media (max-width: 480px) {
+    .payment-methods-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .progress-step span {
+        display: none;
+    }
+
+    .pay-on-delivery-checkbox {
+        gap: 0.75rem;
+    }
+
+    .checkbox-content strong {
+        font-size: 1rem;
+    }
+
+    .checkbox-content p {
+        font-size: 0.875rem;
+    }
+}
