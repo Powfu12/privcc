@@ -294,18 +294,47 @@
     cursor: pointer;
 }
 
-.payment-card i {
-    font-size: 2.5rem;
+.payment-card-icon {
+    font-size: 2.4rem;
     color: var(--gold);
-    margin-bottom: 1rem;
-    display: block;
+    margin-bottom: 0.85rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 3rem;
 }
 
-.payment-card span {
+.payment-card-title {
+    display: block;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 0.35rem;
+    letter-spacing: 0.01em;
+}
+
+.payment-card-sub {
+    display: block;
+    font-size: 0.76rem;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.45);
+    line-height: 1.45;
+}
+
+/* Legacy single-span cards */
+.payment-card span:not(.payment-card-title):not(.payment-card-sub) {
     display: block;
     font-size: 0.9375rem;
     font-weight: 600;
     color: var(--white);
+}
+
+/* Legacy icon-only cards */
+.payment-card > i {
+    font-size: 2.5rem;
+    color: var(--gold);
+    margin-bottom: 1rem;
+    display: block;
 }
 
 .payment-option:hover .payment-card {
@@ -734,4 +763,179 @@
     .checkbox-content p {
         font-size: 0.875rem;
     }
+}
+
+/* ==================== TELEGRAM MODAL ==================== */
+.tg-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.65);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.tg-modal-overlay.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.tg-modal {
+    background: #17212b;
+    border-radius: 20px;
+    width: 100%;
+    max-width: 430px;
+    overflow: hidden;
+    box-shadow: 0 32px 80px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.06);
+    transform: translateY(24px) scale(0.96);
+    transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.tg-modal-overlay.active .tg-modal {
+    transform: translateY(0) scale(1);
+}
+
+.tg-modal-header {
+    background: linear-gradient(145deg, #2AABEE 0%, #1a8fcf 60%, #0d77b5 100%);
+    padding: 2.25rem 2rem 2rem;
+    text-align: center;
+    position: relative;
+}
+
+.tg-icon-wrap {
+    width: 72px;
+    height: 72px;
+    background: rgba(255, 255, 255, 0.18);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.1rem;
+    box-shadow: 0 0 0 8px rgba(255, 255, 255, 0.08);
+}
+
+.tg-icon-wrap i {
+    font-size: 2.2rem;
+    color: #fff;
+}
+
+.tg-modal-title {
+    color: #fff;
+    font-size: 1.45rem;
+    font-weight: 700;
+    margin: 0 0 0.3rem;
+    letter-spacing: -0.01em;
+}
+
+.tg-modal-subtitle {
+    color: rgba(255, 255, 255, 0.75);
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+.tg-modal-body {
+    padding: 1.75rem 2rem 1.25rem;
+}
+
+.tg-modal-body p {
+    color: #8e9ead;
+    font-size: 0.93rem;
+    line-height: 1.65;
+    margin: 0 0 1.5rem;
+}
+
+.tg-modal-body p strong {
+    color: #2AABEE;
+    font-weight: 600;
+}
+
+.tg-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+}
+
+.tg-step {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    color: #c5d0db;
+    font-size: 0.88rem;
+    line-height: 1.4;
+}
+
+.tg-step-num {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: rgba(42, 171, 238, 0.12);
+    border: 1.5px solid rgba(42, 171, 238, 0.45);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: #2AABEE;
+    flex-shrink: 0;
+}
+
+.tg-modal-footer {
+    padding: 1.25rem 2rem 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.btn-tg-download {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.55rem;
+    padding: 0.85rem 1.5rem;
+    background: transparent;
+    border: 1.5px solid rgba(42, 171, 238, 0.5);
+    border-radius: 12px;
+    color: #2AABEE;
+    font-weight: 600;
+    font-size: 0.92rem;
+    text-decoration: none;
+    transition: background 0.2s, border-color 0.2s;
+}
+
+.btn-tg-download:hover {
+    background: rgba(42, 171, 238, 0.1);
+    border-color: #2AABEE;
+}
+
+.btn-tg-continue {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.55rem;
+    padding: 0.95rem 1.5rem;
+    background: linear-gradient(135deg, #2AABEE 0%, #0d88cc 100%);
+    border: none;
+    border-radius: 12px;
+    color: #fff;
+    font-weight: 700;
+    font-size: 0.92rem;
+    cursor: pointer;
+    transition: opacity 0.2s, transform 0.2s;
+    box-shadow: 0 6px 20px rgba(42, 171, 238, 0.35);
+}
+
+.btn-tg-continue:hover {
+    opacity: 0.92;
+    transform: translateY(-1px);
+}
+
+.btn-tg-continue:active {
+    transform: translateY(0);
 }

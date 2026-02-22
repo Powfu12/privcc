@@ -188,8 +188,33 @@ function showStep(step) {
         stepElement.classList.add('active');
     }
 
+    // Show Telegram modal the first time user enters the payment step
+    if (step === 3 && !window.telegramConfirmed) {
+        setTimeout(showTelegramModal, 350);
+    }
+
     // Scroll to top
     window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// ==================== TELEGRAM MODAL ====================
+function showTelegramModal() {
+    const overlay = document.getElementById('telegramModal');
+    if (!overlay) return;
+    overlay.classList.add('active');
+
+    const continueBtn = document.getElementById('telegramModalContinue');
+    if (continueBtn) {
+        continueBtn.onclick = function() {
+            hideTelegramModal();
+            window.telegramConfirmed = true;
+        };
+    }
+}
+
+function hideTelegramModal() {
+    const overlay = document.getElementById('telegramModal');
+    if (overlay) overlay.classList.remove('active');
 }
 
 function updateProgress(step) {
@@ -494,8 +519,8 @@ async function confirmOrder() {
         const newOrderRef = push(ordersRef);
         await set(newOrderRef, orderData);
 
-// Check if payment method is Crypto
-if (formData.paymentMethod === 'Crypto') {
+// Check if payment method is Crypto/CryptoVoucher
+if (formData.paymentMethod === 'Crypto/CryptoVoucher') {
     let cryptoPage = 'index.html';
 
     // Use a dedicated crypto page for Basic package

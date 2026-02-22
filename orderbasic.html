@@ -231,21 +231,31 @@
 
                         <div class="payment-methods-grid">
                             <label class="payment-option">
-                                <input type="radio" name="payment" value="Crypto" required>
+                                <input type="radio" name="payment" value="Crypto/CryptoVoucher" required>
                                 <div class="payment-card">
-                                    <i class="fa fa-wallet"></i>
-                                    <span>Crypto, Creditcard, Bank, PayPal or RevolutPay</span>
+                                    <div class="payment-card-icon"><i class="fab fa-bitcoin"></i></div>
+                                    <span class="payment-card-title">Crypto / Credit Card</span>
+                                    <span class="payment-card-sub">CryptoVoucher gift card accepted</span>
                                 </div>
                             </label>
 
                             <label class="payment-option">
-                                <input type="radio" name="payment" value="Paysafecard or Cryptovoucher">
+                                <input type="radio" name="payment" value="CryptoVoucher">
                                 <div class="payment-card">
-                                    <i class="fa fa-gift"></i>
-                                    <span>Paysafecard or Cryptovoucher</span>
+                                    <div class="payment-card-icon"><i class="fas fa-gift"></i></div>
+                                    <span class="payment-card-title">CryptoVoucher</span>
+                                    <span class="payment-card-sub">Redeem your gift card balance</span>
                                 </div>
                             </label>
 
+                            <label class="payment-option">
+                                <input type="radio" name="payment" value="Paysafecard">
+                                <div class="payment-card">
+                                    <div class="payment-card-icon"><i class="fas fa-shield-halved"></i></div>
+                                    <span class="payment-card-title">Paysafecard</span>
+                                    <span class="payment-card-sub">Pay with your PIN voucher</span>
+                                </div>
+                            </label>
                         </div>
 
                         <div class="form-actions">
@@ -407,6 +417,46 @@
             </div>
         </div>
     </footer>
+
+    <!-- Telegram Required Modal -->
+    <div class="tg-modal-overlay" id="telegramModal" role="dialog" aria-modal="true" aria-labelledby="tgModalTitle">
+        <div class="tg-modal">
+            <div class="tg-modal-header">
+                <div class="tg-icon-wrap">
+                    <i class="fab fa-telegram-plane"></i>
+                </div>
+                <h3 class="tg-modal-title" id="tgModalTitle">Telegram Required</h3>
+                <p class="tg-modal-subtitle">Needed to process your order</p>
+            </div>
+            <div class="tg-modal-body">
+                <p>All orders are processed via <strong>Telegram</strong>. You'll need the app installed to receive your order confirmation and payment instructions from our team.</p>
+                <div class="tg-steps">
+                    <div class="tg-step">
+                        <span class="tg-step-num">1</span>
+                        <span>Download &amp; install Telegram on your device</span>
+                    </div>
+                    <div class="tg-step">
+                        <span class="tg-step-num">2</span>
+                        <span>Create or sign in to your Telegram account</span>
+                    </div>
+                    <div class="tg-step">
+                        <span class="tg-step-num">3</span>
+                        <span>Return here and complete your order</span>
+                    </div>
+                </div>
+            </div>
+            <div class="tg-modal-footer">
+                <a href="https://telegram.org/dl" target="_blank" rel="noopener" class="btn-tg-download">
+                    <i class="fab fa-telegram-plane"></i>
+                    Download Telegram
+                </a>
+                <button class="btn-tg-continue" id="telegramModalContinue">
+                    I have Telegram — Continue
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+    </div>
 
     <!-- Firebase -->
     <script type="module" src="./order.js"></script>
