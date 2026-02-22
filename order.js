@@ -170,7 +170,7 @@ function updateProgress(step) {
 // ==================== VALIDATION ====================
 function validateStep(step) {
     const stepElement = document.getElementById('step' + step);
-    const inputs = stepElement.querySelectorAll('input[required]');
+    const inputs = stepElement.querySelectorAll('input[required], select[required]');
     let isValid = true;
 
     inputs.forEach(input => {
@@ -390,6 +390,14 @@ if (formData.paymentMethod === 'Crypto') {
 
     // Scroll to top
     window.scrollTo({ top: 0, behavior: 'smooth' });
+
+    // Attach contact admin button listener
+    const contactAdminBtn = document.getElementById('contactAdminBtn');
+    if (contactAdminBtn) {
+        contactAdminBtn.addEventListener('click', function() {
+            window.open('https://t.me/onecardadmin/', '_blank');
+        });
+    }
 
     showNotification('Order placed successfully!', 'success');
 }

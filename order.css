@@ -173,7 +173,8 @@
     color: var(--gold);
 }
 
-.form-group input {
+.form-group input,
+.form-group select {
     padding: 1rem 1.25rem;
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.1);
@@ -181,9 +182,26 @@
     color: var(--white);
     font-size: 1rem;
     transition: all 0.3s;
+    font-family: inherit;
 }
 
-.form-group input:focus {
+.form-group select {
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%23d4af37' d='M6 8L0 0h12z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1.25rem center;
+    padding-right: 3rem;
+    cursor: pointer;
+}
+
+.form-group select option {
+    background: #1a1a1a;
+    color: var(--white);
+}
+
+.form-group input:focus,
+.form-group select:focus {
     outline: none;
     border-color: var(--gold);
     background: rgba(255, 255, 255, 0.08);
@@ -470,6 +488,30 @@
     color: var(--white);
 }
 
+.contact-admin-button {
+    background: linear-gradient(135deg, #f4433673 0%, #d32f2f8e 100%);
+    color: white;
+    border: none;
+    padding: 1.5rem 3rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    width: 100%;
+    margin: 1rem 0 2rem;
+    font-family: inherit;
+}
+
+.contact-admin-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(244, 67, 54, 0.4);
+}
+
 /* ==================== SECURITY NOTICE ==================== */
 .security-notice {
     display: flex;
@@ -650,11 +692,6 @@
 }
 
 
-.price-sex {
-    text-decoration: !important;
-    color: var(--text-primar) !important;
-    font-weight: 400 !important;
-}
 
 .price-highlight {
     color: var(--gold) !important;

@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Order your 1Card - Secure checkout process">
-    <title>Order 1Card - Secure Checkout</title>
+    <meta name="description" content="Order your 1Card Standard Package for €150. Fast, secure checkout with multiple payment options.">
+    <title>Order 1Card - Standard Package | Secure Checkout</title>
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -84,7 +84,7 @@
                                     <i class="fas fa-user"></i>
                                     Full Name
                                 </label>
-                                <input type="text" id="fullName" name="fullName" required placeholder="John Doe">
+                                <input type="text" id="fullName" name="fullName" required placeholder="John Doe" autocomplete="name">
                             </div>
 
                             <div class="form-group">
@@ -92,7 +92,7 @@
                                     <i class="fas fa-phone"></i>
                                     Phone Number
                                 </label>
-                                <input type="tel" id="phone" name="phone" required placeholder="+1 234 567 8900">
+                                <input type="tel" id="phone" name="phone" required placeholder="+1 234 567 8900" autocomplete="tel">
                             </div>
 
                             <div class="form-group">
@@ -100,7 +100,7 @@
                                     <i class="fas fa-envelope"></i>
                                     Email Address
                                 </label>
-                                <input type="email" id="email" name="email" required placeholder="john@example.com">
+                                <input type="email" id="email" name="email" required placeholder="john@example.com" autocomplete="email">
                             </div>
 
                             <div class="form-group full-width">
@@ -108,7 +108,7 @@
                                     <i class="fab fa-telegram"></i>
                                     Telegram Username
                                 </label>
-                                <input type="text" id="telegram" name="telegram" required placeholder="@johndoe">
+                                <input type="text" id="telegram" name="telegram" required placeholder="@johndoe" autocomplete="username">
                             </div>
                         </div>
 
@@ -140,7 +140,7 @@
                                     <i class="fas fa-map-marker-alt"></i>
                                     Street Address
                                 </label>
-                                <input type="text" id="address" name="address" required placeholder="123 Main Street">
+                                <input type="text" id="address" name="address" required placeholder="123 Main Street" autocomplete="street-address">
                             </div>
 
                             <div class="form-group">
@@ -148,7 +148,7 @@
                                     <i class="fas fa-city"></i>
                                     City
                                 </label>
-                                <input type="text" id="city" name="city" required placeholder="New York">
+                                <input type="text" id="city" name="city" required placeholder="New York" autocomplete="address-level2">
                             </div>
 
                             <div class="form-group">
@@ -156,7 +156,7 @@
                                     <i class="fas fa-mail-bulk"></i>
                                     Postal Code
                                 </label>
-                                <input type="text" id="postalCode" name="postalCode" required placeholder="10001">
+                                <input type="text" id="postalCode" name="postalCode" required placeholder="10001" autocomplete="postal-code" inputmode="numeric">
                             </div>
 
                             <div class="form-group">
@@ -164,7 +164,7 @@
                                     <i class="fas fa-map"></i>
                                     State/Province
                                 </label>
-                                <input type="text" id="state" name="state" required placeholder="NY">
+                                <input type="text" id="state" name="state" required placeholder="NY" autocomplete="address-level1">
                             </div>
 
                             <div class="form-group">
@@ -172,7 +172,43 @@
                                     <i class="fas fa-globe"></i>
                                     Country
                                 </label>
-                                <input type="text" id="country" name="country" required placeholder="United States">
+                                <select id="country" name="country" required autocomplete="country-name">
+                                    <option value="">Select your country</option>
+                                    <option value="Austria">Austria</option>
+                                    <option value="Belgium">Belgium</option>
+                                    <option value="Bulgaria">Bulgaria</option>
+                                    <option value="Croatia">Croatia</option>
+                                    <option value="Cyprus">Cyprus</option>
+                                    <option value="Czech Republic">Czech Republic</option>
+                                    <option value="Denmark">Denmark</option>
+                                    <option value="Estonia">Estonia</option>
+                                    <option value="Finland">Finland</option>
+                                    <option value="France">France</option>
+                                    <option value="Germany">Germany</option>
+                                    <option value="Greece">Greece</option>
+                                    <option value="Hungary">Hungary</option>
+                                    <option value="Ireland">Ireland</option>
+                                    <option value="Italy">Italy</option>
+                                    <option value="Latvia">Latvia</option>
+                                    <option value="Lithuania">Lithuania</option>
+                                    <option value="Luxembourg">Luxembourg</option>
+                                    <option value="Malta">Malta</option>
+                                    <option value="Netherlands">Netherlands</option>
+                                    <option value="Poland">Poland</option>
+                                    <option value="Portugal">Portugal</option>
+                                    <option value="Romania">Romania</option>
+                                    <option value="Slovakia">Slovakia</option>
+                                    <option value="Slovenia">Slovenia</option>
+                                    <option value="Spain">Spain</option>
+                                    <option value="Sweden">Sweden</option>
+                                    <option value="United Kingdom">United Kingdom</option>
+                                    <option value="Norway">Norway</option>
+                                    <option value="Switzerland">Switzerland</option>
+                                    <option value="United States">United States</option>
+                                    <option value="Canada">Canada</option>
+                                    <option value="Australia">Australia</option>
+                                    <option value="Other">Other</option>
+                                </select>
                             </div>
                         </div>
 
@@ -198,13 +234,13 @@
                             <label class="payment-option">
                                 <input type="radio" name="payment" value="Crypto" required>
                                 <div class="payment-card">
-                                    <i class="fa fa-university"></i>
+                                    <i class="fa fa-wallet"></i>
                                     <span>Crypto, Creditcard, Bank, PayPal or RevolutPay</span>
                                 </div>
                             </label>
 
                             <label class="payment-option">
-                                <input type="radio" name="payment" value="Paysafecard or Cryptovoucher" required>
+                                <input type="radio" name="payment" value="Paysafecard or Cryptovoucher">
                                 <div class="payment-card">
                                     <i class="fa fa-gift"></i>
                                     <span>Paysafecard or Cryptovoucher</span>
@@ -346,45 +382,14 @@
                             </div>
 
                             <p class="success-message">
-                                We've sent a confirmation email to <strong id="successEmail">-</strong>.
-                                <br>Please save your order code for tracking purposes.
-
-<button class="contact-admin-button"
-        onclick="window.open('https://t.me/onecardadmin/', '_blank')">
-    <i class="fas fa-headset"></i>
-    Send our admin your order number to continue with your payment.
-</button>
+                                We've sent a confirmation email to <strong id="successEmail">-</strong>.<br>
+                                Please save your order code for tracking purposes.
                             </p>
 
-
-                              
-<style>
-          .contact-admin-button {
-            background: linear-gradient(135deg, #f4433673 0%, #d32f2f8e 100%);
-            color: white;
-            border: none;
-            padding: 1.5rem 3rem;
-            font-size: 1.1rem;
-            font-weight: 600;
-            border-radius: 50px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-            width: 100%;
-            margin: 1rem 0;
-        }
-
-        .contact-admin-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(244, 67, 54, 0.4);
-        }
-
-        </style>
-
-                            </p>
+                            <button class="contact-admin-button" id="contactAdminBtn">
+                                <i class="fas fa-headset"></i>
+                                Send our admin your order number to continue with your payment.
+                            </button>
 
                             <div class="form-actions">
                                 <a href="index.html" class="btn btn-primary">
