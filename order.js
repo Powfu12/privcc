@@ -762,3 +762,48 @@ style.textContent = `
 document.head.appendChild(style);
 
 console.log('Order system initialized');
+
+// ==================== PAYMENT METHOD HINTS ====================
+(function () {
+    var hints = {
+        'Crypto':       'pmHintCrypto',
+        'Credit Card':  'pmHintCC',
+        'CryptoVoucher':'pmHintCV',
+        'Paysafecard':  'pmHintPS'
+    };
+
+    function showHint(value) {
+        Object.values(hints).forEach(function (id) {
+            var el = document.getElementById(id);
+            if (el) el.classList.remove('visible');
+        });
+        if (value && hints[value]) {
+            var target = document.getElementById(hints[value]);
+            if (target) target.classList.add('visible');
+        }
+    }
+
+    document.addEventListener('change', function (e) {
+        if (e.target && e.target.name === 'payment') {
+            showHint(e.target.value);
+        }
+    });
+})();
+
+// ==================== MOBILE TRUST BAR — HIDE ON SUCCESS ====================
+(function () {
+    var bar = document.getElementById('mobileTrustBar');
+    if (!bar) return;
+
+    var observer = new MutationObserver(function () {
+        var success = document.getElementById('stepSuccess');
+        if (success && success.classList.contains('active')) {
+            bar.classList.add('hidden');
+        }
+    });
+
+    var form = document.getElementById('orderForm');
+    if (form) {
+        observer.observe(form, { attributes: true, subtree: true, attributeFilter: ['class'] });
+    }
+})();

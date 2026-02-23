@@ -1164,3 +1164,348 @@
 
 .btn-tg-continue:active {
     transform: translateY(0);
+
+/* ==================== TRUST STRIP ==================== */
+.trust-strip {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.5rem;
+    padding: 0.85rem 1.5rem;
+    margin-bottom: 1.5rem;
+    background: rgba(212, 175, 55, 0.05);
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    border-radius: 12px;
+}
+
+.trust-strip-item {
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.75);
+    white-space: nowrap;
+}
+
+.trust-strip-item i {
+    color: var(--gold);
+    font-size: 0.85rem;
+}
+
+/* ==================== PAYMENT METHOD BADGES ==================== */
+.payment-card {
+    position: relative;
+}
+
+.pm-badge {
+    position: absolute;
+    top: -10px;
+    right: -6px;
+    font-size: 0.65rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 3px 8px;
+    border-radius: 20px;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.pm-badge--popular {
+    background: var(--gradient-gold);
+    color: #000;
+    box-shadow: 0 2px 8px rgba(212, 175, 55, 0.4);
+}
+
+.pm-badge--value {
+    background: linear-gradient(135deg, #4caf50, #2e7d32);
+    color: #fff;
+    box-shadow: 0 2px 8px rgba(76, 175, 80, 0.35);
+}
+
+/* ==================== PAYMENT HINTS ==================== */
+.pm-hint-wrap {
+    margin-top: 1rem;
+    min-height: 2.5rem;
+}
+
+.pm-hint {
+    display: none;
+    align-items: flex-start;
+    gap: 0.5rem;
+    font-size: 0.82rem;
+    color: rgba(255, 255, 255, 0.7);
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 0.65rem 0.9rem;
+    line-height: 1.5;
+    animation: fadeIn 0.3s ease;
+}
+
+.pm-hint.visible {
+    display: flex;
+}
+
+.pm-hint i {
+    color: var(--gold);
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+.pm-hint strong {
+    color: #fff;
+}
+
+.pm-hint--code {
+    background: rgba(42, 171, 238, 0.06);
+    border-color: rgba(42, 171, 238, 0.25);
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.pm-hint--code i {
+    color: #2AABEE;
+}
+
+/* ==================== GUARANTEE SEAL ==================== */
+.guarantee-seal {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.1rem 1.5rem;
+    margin-bottom: 1.25rem;
+    border: 2px dashed rgba(212, 175, 55, 0.35);
+    border-radius: 12px;
+    background: rgba(212, 175, 55, 0.04);
+}
+
+.guarantee-seal-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: rgba(212, 175, 55, 0.12);
+    border: 1.5px solid rgba(212, 175, 55, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.guarantee-seal-icon i {
+    font-size: 1.3rem;
+    color: var(--gold);
+}
+
+.guarantee-seal-text {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.guarantee-seal-text strong {
+    font-size: 0.95rem;
+    color: var(--white);
+}
+
+.guarantee-seal-text span {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}
+
+.guarantee-seal-small {
+    font-size: 0.72rem !important;
+    color: var(--text-muted) !important;
+}
+
+/* ==================== PIC STEPS (16-digit instruction) ==================== */
+.pic-steps {
+    margin: 0.6rem 0 1rem 0;
+    padding-left: 1.4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.pic-steps li {
+    font-size: 0.88rem;
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.5;
+}
+
+.pic-steps li strong {
+    color: #fff;
+}
+
+/* ==================== WHAT HAPPENS NEXT ==================== */
+.next-steps {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 14px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    text-align: left;
+}
+
+.next-steps-title {
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-muted);
+    margin-bottom: 1.1rem;
+    text-align: center;
+}
+
+.next-steps-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+}
+
+.next-step-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.9rem;
+}
+
+.next-step-num {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--gradient-gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.85rem;
+    font-weight: 800;
+    color: #000;
+    flex-shrink: 0;
+}
+
+.next-step-body {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding-top: 5px;
+}
+
+.next-step-body strong {
+    font-size: 0.88rem;
+    color: #fff;
+}
+
+.next-step-body span {
+    font-size: 0.78rem;
+    color: var(--text-secondary);
+    line-height: 1.4;
+}
+
+/* ==================== MINI TESTIMONIALS ==================== */
+.mini-testimonials {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin: 1.5rem 0 0;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.mini-review {
+    background: rgba(26, 26, 26, 0.5);
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    border-left: 3px solid var(--gold);
+    border-radius: 12px;
+    padding: 1.1rem 1.2rem;
+}
+
+.mini-review-stars {
+    color: var(--gold);
+    font-size: 0.75rem;
+    margin-bottom: 0.5rem;
+}
+
+.mini-review-text {
+    font-size: 0.82rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 0.6rem;
+    font-style: italic;
+}
+
+.mini-review-author {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    flex-wrap: wrap;
+}
+
+.verified-badge {
+    color: #4caf50;
+    font-weight: 700;
+    font-size: 0.7rem;
+}
+
+/* ==================== MOBILE TRUST BAR ==================== */
+.mobile-trust-bar {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 9000;
+    background: rgba(10, 10, 10, 0.97);
+    border-top: 1px solid rgba(212, 175, 55, 0.25);
+    padding: 0.6rem 1rem;
+    justify-content: space-around;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+
+.mobile-trust-bar.hidden {
+    display: none !important;
+}
+
+.mtb-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+}
+
+.mtb-item i {
+    font-size: 1rem;
+    color: var(--gold);
+}
+
+.mtb-item span {
+    font-size: 0.62rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.6);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+@media (max-width: 768px) {
+    .mobile-trust-bar {
+        display: flex;
+    }
+
+    .mini-testimonials {
+        grid-template-columns: 1fr;
+    }
+
+    .trust-strip {
+        gap: 0.4rem 1rem;
+        padding: 0.7rem 1rem;
+    }
+
+    .guarantee-seal {
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+    }
+}
