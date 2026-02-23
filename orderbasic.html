@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Order your 1Card - Secure checkout process">
-    <title>Order 1Card - Secure Checkout</title>
+    <meta name="description" content="Order your 1Card Basic Package for €100. Fast, secure checkout with multiple payment options.">
+    <title>Order 1Card - Basic Package | Secure Checkout</title>
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -69,6 +69,14 @@
                 </div>
             </div>
 
+            <!-- Trust Strip -->
+            <div class="trust-strip">
+                <div class="trust-strip-item"><i class="fas fa-lock"></i><span>256-bit SSL Encrypted</span></div>
+                <div class="trust-strip-item"><i class="fas fa-shield-alt"></i><span>Money Back Guarantee</span></div>
+                <div class="trust-strip-item"><i class="fas fa-users"></i><span>10,000+ Happy Customers</span></div>
+                <div class="trust-strip-item"><i class="fab fa-telegram-plane"></i><span>24/7 Telegram Support</span></div>
+            </div>
+
             <!-- Order Form -->
             <div class="order-form-container">
                 <form id="orderForm">
@@ -84,7 +92,7 @@
                                     <i class="fas fa-user"></i>
                                     Full Name
                                 </label>
-                                <input type="text" id="fullName" name="fullName" required placeholder="John Doe">
+                                <input type="text" id="fullName" name="fullName" required placeholder="John Doe" autocomplete="name">
                             </div>
 
                             <div class="form-group">
@@ -92,7 +100,7 @@
                                     <i class="fas fa-phone"></i>
                                     Phone Number
                                 </label>
-                                <input type="tel" id="phone" name="phone" required placeholder="+1 234 567 8900">
+                                <input type="tel" id="phone" name="phone" required placeholder="+1 234 567 8900" autocomplete="tel">
                             </div>
 
                             <div class="form-group">
@@ -100,7 +108,7 @@
                                     <i class="fas fa-envelope"></i>
                                     Email Address
                                 </label>
-                                <input type="email" id="email" name="email" required placeholder="john@example.com">
+                                <input type="email" id="email" name="email" required placeholder="john@example.com" autocomplete="email">
                             </div>
 
                             <div class="form-group full-width">
@@ -108,7 +116,7 @@
                                     <i class="fab fa-telegram"></i>
                                     Telegram Username
                                 </label>
-                                <input type="text" id="telegram" name="telegram" required placeholder="@johndoe">
+                                <input type="text" id="telegram" name="telegram" required placeholder="@johndoe" autocomplete="username">
                             </div>
                         </div>
 
@@ -140,7 +148,7 @@
                                     <i class="fas fa-map-marker-alt"></i>
                                     Street Address
                                 </label>
-                                <input type="text" id="address" name="address" required placeholder="123 Main Street">
+                                <input type="text" id="address" name="address" required placeholder="123 Main Street" autocomplete="street-address">
                             </div>
 
                             <div class="form-group">
@@ -148,7 +156,7 @@
                                     <i class="fas fa-city"></i>
                                     City
                                 </label>
-                                <input type="text" id="city" name="city" required placeholder="New York">
+                                <input type="text" id="city" name="city" required placeholder="New York" autocomplete="address-level2">
                             </div>
 
                             <div class="form-group">
@@ -156,7 +164,7 @@
                                     <i class="fas fa-mail-bulk"></i>
                                     Postal Code
                                 </label>
-                                <input type="text" id="postalCode" name="postalCode" required placeholder="10001">
+                                <input type="text" id="postalCode" name="postalCode" required placeholder="10001" autocomplete="postal-code" inputmode="numeric">
                             </div>
 
                             <div class="form-group">
@@ -164,7 +172,7 @@
                                     <i class="fas fa-map"></i>
                                     State/Province
                                 </label>
-                                <input type="text" id="state" name="state" required placeholder="NY">
+                                <input type="text" id="state" name="state" required placeholder="NY" autocomplete="address-level1">
                             </div>
 
                             <div class="form-group">
@@ -172,7 +180,43 @@
                                     <i class="fas fa-globe"></i>
                                     Country
                                 </label>
-                                <input type="text" id="country" name="country" required placeholder="United States">
+                                <select id="country" name="country" required autocomplete="country-name">
+                                    <option value="">Select your country</option>
+                                    <option value="Austria">Austria</option>
+                                    <option value="Belgium">Belgium</option>
+                                    <option value="Bulgaria">Bulgaria</option>
+                                    <option value="Croatia">Croatia</option>
+                                    <option value="Cyprus">Cyprus</option>
+                                    <option value="Czech Republic">Czech Republic</option>
+                                    <option value="Denmark">Denmark</option>
+                                    <option value="Estonia">Estonia</option>
+                                    <option value="Finland">Finland</option>
+                                    <option value="France">France</option>
+                                    <option value="Germany">Germany</option>
+                                    <option value="Greece">Greece</option>
+                                    <option value="Hungary">Hungary</option>
+                                    <option value="Ireland">Ireland</option>
+                                    <option value="Italy">Italy</option>
+                                    <option value="Latvia">Latvia</option>
+                                    <option value="Lithuania">Lithuania</option>
+                                    <option value="Luxembourg">Luxembourg</option>
+                                    <option value="Malta">Malta</option>
+                                    <option value="Netherlands">Netherlands</option>
+                                    <option value="Poland">Poland</option>
+                                    <option value="Portugal">Portugal</option>
+                                    <option value="Romania">Romania</option>
+                                    <option value="Slovakia">Slovakia</option>
+                                    <option value="Slovenia">Slovenia</option>
+                                    <option value="Spain">Spain</option>
+                                    <option value="Sweden">Sweden</option>
+                                    <option value="United Kingdom">United Kingdom</option>
+                                    <option value="Norway">Norway</option>
+                                    <option value="Switzerland">Switzerland</option>
+                                    <option value="United States">United States</option>
+                                    <option value="Canada">Canada</option>
+                                    <option value="Australia">Australia</option>
+                                    <option value="Other">Other</option>
+                                </select>
                             </div>
                         </div>
 
@@ -193,23 +237,60 @@
                         <h2 class="step-title">Payment Method</h2>
                         <p class="step-description">Select your preferred payment method</p>
 
-                        <div class="payment-methods-grid">
+                        <div class="payment-methods-grid payment-grid-4">
                             <label class="payment-option">
                                 <input type="radio" name="payment" value="Crypto" required>
                                 <div class="payment-card">
-                                    <i class="fa fa-university"></i>
-                                    <span>Crypto, Creditcard, Bank, PayPal or RevolutPay</span>
+                                    <div class="payment-card-icon"><i class="fab fa-bitcoin"></i></div>
+                                    <span class="payment-card-title">Crypto</span>
+                                    <span class="payment-card-sub">BTC, ETH, USDT &amp; more</span>
                                 </div>
                             </label>
 
                             <label class="payment-option">
-                                <input type="radio" name="payment" value="Paysafecard or Cryptovoucher" required>
+                                <input type="radio" name="payment" value="Credit Card">
                                 <div class="payment-card">
-                                    <i class="fa fa-gift"></i>
-                                    <span>Paysafecard or Cryptovoucher</span>
+                                    <span class="pm-badge pm-badge--popular">Most Popular</span>
+                                    <div class="payment-card-icon"><i class="fas fa-credit-card"></i></div>
+                                    <span class="payment-card-title">Credit Card</span>
+                                    <span class="payment-card-sub">Visa, Mastercard &amp; more</span>
                                 </div>
                             </label>
 
+                            <label class="payment-option">
+                                <input type="radio" name="payment" value="CryptoVoucher">
+                                <div class="payment-card">
+                                    <span class="pm-badge pm-badge--value">Best Value</span>
+                                    <div class="payment-card-icon"><i class="fas fa-gift"></i></div>
+                                    <span class="payment-card-title">CryptoVoucher</span>
+                                    <span class="payment-card-sub">Redeem your gift card balance</span>
+                                </div>
+                            </label>
+
+                            <label class="payment-option">
+                                <input type="radio" name="payment" value="Paysafecard">
+                                <div class="payment-card">
+                                    <div class="payment-card-icon"><i class="fas fa-shield-halved"></i></div>
+                                    <span class="payment-card-title">Paysafecard</span>
+                                    <span class="payment-card-sub">Pay with your PIN voucher</span>
+                                </div>
+                            </label>
+                        </div>
+
+                        <!-- Payment hints -->
+                        <div class="pm-hint-wrap">
+                            <div class="pm-hint" id="pmHintCrypto">
+                                <i class="fas fa-lock"></i> Anonymous &amp; irreversible — processed securely via Helio checkout
+                            </div>
+                            <div class="pm-hint" id="pmHintCC">
+                                <i class="fas fa-lock"></i> Visa/Mastercard processed securely via Helio checkout
+                            </div>
+                            <div class="pm-hint pm-hint--code" id="pmHintCV">
+                                <i class="fas fa-clipboard-list"></i> After ordering, send your <strong>16-digit gift card code</strong> + Order Code to @onecardadmin on Telegram
+                            </div>
+                            <div class="pm-hint pm-hint--code" id="pmHintPS">
+                                <i class="fas fa-clipboard-list"></i> After ordering, send your <strong>16-digit PIN code</strong> + Order Code to @onecardadmin on Telegram
+                            </div>
                         </div>
 
                         <div class="form-actions">
@@ -293,7 +374,7 @@
                             <!-- Price Summary -->
                             <div class="price-summary">
                                 <div class="price-row">
-                                    <span>Basic Package (€100):</span>
+                                    <span>Basic Package:</span>
                                     <span>€100.00</span>
                                 </div>
                                 <div class="price-row">
@@ -304,6 +385,16 @@
                                     <span>Total:</span>
                                     <span>€120.00</span>
                                 </div>
+                            </div>
+                        </div>
+
+                        <!-- Guarantee Seal -->
+                        <div class="guarantee-seal">
+                            <div class="guarantee-seal-icon"><i class="fas fa-shield-alt"></i></div>
+                            <div class="guarantee-seal-text">
+                                <strong>Money-Back Guarantee</strong>
+                                <span>Not satisfied? We'll refund you — no questions asked.</span>
+                                <span class="guarantee-seal-small">One-time payment &middot; No subscriptions &middot; No hidden fees</span>
                             </div>
                         </div>
 
@@ -326,54 +417,91 @@
                                 <i class="fas fa-check-circle"></i>
                             </div>
                             <h2>Order Confirmed!</h2>
-                            <p>Your order has been successfully placed</p>
+                            <p class="success-sub">Your order is reserved — complete payment to confirm</p>
 
                             <div class="order-code-box">
-                                <span class="order-code-label">Order Code:</span>
-                                <span class="order-code" id="orderCode">-</span>
+                                <span class="order-code-label">Your Order Code</span>
+                                <div class="order-code-row">
+                                    <span class="order-code" id="orderCode">-</span>
+                                    <button type="button" class="copy-code-btn" id="copyCodeBtn" title="Copy order code">
+                                        <i class="fas fa-copy"></i>
+                                    </button>
+                                </div>
                             </div>
 
-                            <p class="success-message">
-                                We've sent a confirmation email to <strong id="successEmail">-</strong>.
-                                <br>Please save your order code for tracking purposes.
+                            <div class="payment-instruction-card">
+                                <div class="pic-header">
+                                    <div class="pic-tg-icon"><i class="fab fa-telegram-plane"></i></div>
+                                    <div>
+                                        <div class="pic-title">Complete Your Payment</div>
+                                        <div class="pic-sub">Contact our admin via Telegram</div>
+                                    </div>
+                                </div>
+                                <p class="pic-text">Send the following to our admin on Telegram to complete your payment:</p>
+                                <ol class="pic-steps">
+                                    <li>Your <strong>Order Code</strong> (use the copy button above)</li>
+                                    <li>Your <strong>16-digit voucher / PIN code</strong></li>
+                                </ol>
+                                <a href="https://t.me/onecardadmin" target="_blank" rel="noopener" class="btn-contact-admin" id="contactAdminBtn">
+                                    <i class="fab fa-telegram-plane"></i>
+                                    Message @onecardadmin
+                                </a>
+                            </div>
 
-<button class="contact-admin-button"
-        onclick="window.open('https://t.me/onecardadmin/', '_blank')">
-    <i class="fas fa-headset"></i>
-    Send our admin your order number to continue with your payment.
-</button>
-                            </p>
+                            <div class="countdown-card" id="countdownCard">
+                                <div class="countdown-header">
+                                    <i class="fas fa-hourglass-half"></i>
+                                    <span>Payment Window</span>
+                                </div>
+                                <p class="countdown-info">You have <strong>24 hours</strong> to complete payment — after this, your order will be automatically cancelled.</p>
+                                <div class="countdown-timer">
+                                    <div class="countdown-unit">
+                                        <span class="countdown-num" id="cdHours">23</span>
+                                        <span class="countdown-label">hours</span>
+                                    </div>
+                                    <span class="countdown-sep">:</span>
+                                    <div class="countdown-unit">
+                                        <span class="countdown-num" id="cdMinutes">59</span>
+                                        <span class="countdown-label">min</span>
+                                    </div>
+                                    <span class="countdown-sep">:</span>
+                                    <div class="countdown-unit">
+                                        <span class="countdown-num" id="cdSeconds">59</span>
+                                        <span class="countdown-label">sec</span>
+                                    </div>
+                                </div>
+                            </div>
 
-
-                              
-<style>
-          .contact-admin-button {
-            background: linear-gradient(135deg, #f4433673 0%, #d32f2f8e 100%);
-            color: white;
-            border: none;
-            padding: 1.5rem 3rem;
-            font-size: 1.1rem;
-            font-weight: 600;
-            border-radius: 50px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-            width: 100%;
-            margin: 1rem 0;
-        }
-
-        .contact-admin-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(244, 67, 54, 0.4);
-        }
-
-        </style>
+                            <!-- What Happens Next -->
+                            <div class="next-steps">
+                                <div class="next-steps-title">What Happens Next</div>
+                                <div class="next-steps-grid">
+                                    <div class="next-step-item">
+                                        <div class="next-step-num">1</div>
+                                        <div class="next-step-body">
+                                            <strong>Message Admin</strong>
+                                            <span>Send your Order Code &amp; 16-digit code to @onecardadmin</span>
+                                        </div>
+                                    </div>
+                                    <div class="next-step-item">
+                                        <div class="next-step-num">2</div>
+                                        <div class="next-step-body">
+                                            <strong>Payment Confirmed</strong>
+                                            <span>Admin verifies your code within minutes</span>
+                                        </div>
+                                    </div>
+                                    <div class="next-step-item">
+                                        <div class="next-step-num">3</div>
+                                        <div class="next-step-body">
+                                            <strong>Card Dispatched</strong>
+                                            <span>Your 1Card is shipped to your delivery address</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
 
                             <div class="form-actions">
-                                <a href="index.html" class="btn btn-primary">
+                                <a href="index.html" class="btn btn-secondary">
                                     <i class="fas fa-home"></i>
                                     Return to Home
                                 </a>
@@ -384,6 +512,24 @@
                 </form>
             </div>
 
+            <!-- Mini Testimonials -->
+            <div class="mini-testimonials">
+                <div class="mini-review">
+                    <div class="mini-review-stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="mini-review-text">"Card arrived in 5 days and worked instantly. Super smooth process — admin replied within minutes."</p>
+                    <span class="mini-review-author">— Marcus T., Germany &nbsp;<span class="verified-badge">&#10003; Verified Buyer</span></span>
+                </div>
+                <div class="mini-review">
+                    <div class="mini-review-stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="mini-review-text">"Bought the Professional Package — every cent was there and the card worked globally. Totally worth it."</p>
+                    <span class="mini-review-author">— Sophie K., Netherlands &nbsp;<span class="verified-badge">&#10003; Verified Buyer</span></span>
+                </div>
+            </div>
+
             <!-- Security Badge -->
             <div class="security-notice">
                 <i class="fas fa-shield-alt"></i>
@@ -391,6 +537,22 @@
             </div>
         </div>
     </section>
+
+    <!-- Mobile Trust Bar -->
+    <div class="mobile-trust-bar" id="mobileTrustBar">
+        <div class="mtb-item">
+            <i class="fas fa-lock"></i>
+            <span>SSL Secure</span>
+        </div>
+        <div class="mtb-item">
+            <i class="fas fa-shield-alt"></i>
+            <span>Guaranteed</span>
+        </div>
+        <div class="mtb-item">
+            <i class="fab fa-telegram-plane"></i>
+            <span>24/7 Support</span>
+        </div>
+    </div>
 
     <!-- ==================== FOOTER ==================== -->
     <footer class="footer">
@@ -401,7 +563,48 @@
         </div>
     </footer>
 
+    <!-- Telegram Required Modal -->
+    <div class="tg-modal-overlay" id="telegramModal" role="dialog" aria-modal="true" aria-labelledby="tgModalTitle">
+        <div class="tg-modal">
+            <div class="tg-modal-header">
+                <div class="tg-icon-wrap">
+                    <i class="fab fa-telegram-plane"></i>
+                </div>
+                <h3 class="tg-modal-title" id="tgModalTitle">Telegram Required</h3>
+                <p class="tg-modal-subtitle">Needed to process your order</p>
+            </div>
+            <div class="tg-modal-body">
+                <p>All orders are processed via <strong>Telegram</strong>. You'll need the app installed to receive your order confirmation and payment instructions from our team.</p>
+                <div class="tg-steps">
+                    <div class="tg-step">
+                        <span class="tg-step-num">1</span>
+                        <span>Download &amp; install Telegram on your device</span>
+                    </div>
+                    <div class="tg-step">
+                        <span class="tg-step-num">2</span>
+                        <span>Create or sign in to your Telegram account</span>
+                    </div>
+                    <div class="tg-step">
+                        <span class="tg-step-num">3</span>
+                        <span>Return here and complete your order</span>
+                    </div>
+                </div>
+            </div>
+            <div class="tg-modal-footer">
+                <a href="https://telegram.org/dl" target="_blank" rel="noopener" class="btn-tg-download">
+                    <i class="fab fa-telegram-plane"></i>
+                    Download Telegram
+                </a>
+                <button class="btn-tg-continue" id="telegramModalContinue">
+                    I have Telegram — Continue
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
     <!-- Firebase -->
     <script type="module" src="./order.js"></script>
+    <script src="social-proof.js"></script>
 </body>
 </html>
