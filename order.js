@@ -762,3 +762,121 @@ style.textContent = `
 document.head.appendChild(style);
 
 console.log('Order system initialized');
+// ==================== SOCIAL PROOF NOTIFICATIONS ====================
+const SP_NAMES = [
+    'James', 'Oliver', 'Emma', 'Sophia', 'Liam', 'Noah', 'Ava', 'Isabella',
+    'Ethan', 'Lucas', 'Mia', 'Charlotte', 'Mason', 'Logan', 'Amelia', 'Harper',
+    'Jack', 'Aiden', 'Ella', 'Avery', 'Elijah', 'Caden', 'Scarlett', 'Grace',
+    'Sebastian', 'Carter', 'Victoria', 'Luna', 'Mateo', 'Owen', 'Aria', 'Chloe',
+    'Jayden', 'Wyatt', 'Penelope', 'Layla', 'Grayson', 'Julian', 'Riley', 'Zoey',
+    'Levi', 'Isaac', 'Nora', 'Lily', 'Gabriel', 'Lincoln', 'Eleanor', 'Hannah',
+    'Ryan', 'David', 'Sarah', 'Julia', 'Daniel', 'Alex', 'Sophie', 'Nathan',
+    'Tyler', 'Brandon', 'Zoe', 'Claire', 'Dylan', 'Connor', 'Megan', 'Paige',
+    'Caleb', 'Hunter', 'Brooke', 'Savannah', 'Evan', 'Sean', 'Natalie', 'Leah',
+    'Marcus', 'Leon', 'Nina', 'Anya', 'Max', 'Felix', 'Laura', 'Kristina',
+    'Tom', 'Chris', 'Anna', 'Sandra', 'Patrick', 'Adrian', 'Diana', 'Monica'
+];
+
+const SP_COUNTRIES = [
+    { name: 'United States', flag: '🇺🇸' },
+    { name: 'United Kingdom', flag: '🇬🇧' },
+    { name: 'Germany', flag: '🇩🇪' },
+    { name: 'France', flag: '🇫🇷' },
+    { name: 'Canada', flag: '🇨🇦' },
+    { name: 'Australia', flag: '🇦🇺' },
+    { name: 'Netherlands', flag: '🇳🇱' },
+    { name: 'Sweden', flag: '🇸🇪' },
+    { name: 'Norway', flag: '🇳🇴' },
+    { name: 'Switzerland', flag: '🇨🇭' },
+    { name: 'Belgium', flag: '🇧🇪' },
+    { name: 'Denmark', flag: '🇩🇰' },
+    { name: 'Spain', flag: '🇪🇸' },
+    { name: 'Italy', flag: '🇮🇹' },
+    { name: 'Poland', flag: '🇵🇱' },
+    { name: 'Portugal', flag: '🇵🇹' },
+    { name: 'Austria', flag: '🇦🇹' },
+    { name: 'Finland', flag: '🇫🇮' },
+    { name: 'Ireland', flag: '🇮🇪' },
+    { name: 'New Zealand', flag: '🇳🇿' },
+    { name: 'Japan', flag: '🇯🇵' },
+    { name: 'Singapore', flag: '🇸🇬' },
+    { name: 'UAE', flag: '🇦🇪' },
+    { name: 'Luxembourg', flag: '🇱🇺' },
+    { name: 'Czech Republic', flag: '🇨🇿' },
+    { name: 'Slovakia', flag: '🇸🇰' },
+    { name: 'Romania', flag: '🇷🇴' },
+    { name: 'Hungary', flag: '🇭🇺' },
+    { name: 'Greece', flag: '🇬🇷' },
+    { name: 'Croatia', flag: '🇭🇷' }
+];
+
+const SP_PACKAGES = [
+    { name: 'Basic Package',        price: '€29' },
+    { name: 'Standard Package',     price: '€49' },
+    { name: 'Professional Package', price: '€89' },
+    { name: 'Basic Package',        price: '€29' },
+    { name: 'Standard Package',     price: '€49' },
+    { name: 'Basic Package',        price: '€29' }
+];
+
+const SP_TIMES = [
+    'just now', 'just now', '1 min ago', '2 mins ago',
+    '3 mins ago', '4 mins ago', '5 mins ago', '7 mins ago',
+    '8 mins ago', '10 mins ago', '12 mins ago', '15 mins ago'
+];
+
+function startSocialProofNotifications() {
+    let container = document.getElementById('spContainer');
+    if (!container) {
+        container = document.createElement('div');
+        container.id = 'spContainer';
+        document.body.appendChild(container);
+    }
+
+    function rand(arr) { return arr[Math.floor(Math.random() * arr.length)]; }
+
+    function showSP() {
+        const name    = rand(SP_NAMES);
+        const country = rand(SP_COUNTRIES);
+        const pkg     = rand(SP_PACKAGES);
+        const time    = rand(SP_TIMES);
+
+        const el = document.createElement('div');
+        el.className = 'sp-notif';
+        el.innerHTML =
+            '<div class="sp-avatar">' + name.charAt(0) + '</div>' +
+            '<div class="sp-body">' +
+                '<div class="sp-top">' +
+                    '<span class="sp-name">' + name + '</span>' +
+                    '<span class="sp-flag">' + country.flag + '</span>' +
+                '</div>' +
+                '<div class="sp-pkg">ordered <strong>' + pkg.name + '</strong></div>' +
+                '<div class="sp-meta">' + country.name + ' &middot; ' + time + '</div>' +
+            '</div>' +
+            '<button type="button" class="sp-close" aria-label="Close">&times;</button>';
+
+        container.appendChild(el);
+
+        // Trigger slide-in
+        requestAnimationFrame(function() {
+            requestAnimationFrame(function() { el.classList.add('sp-notif--in'); });
+        });
+
+        function dismiss() {
+            el.classList.remove('sp-notif--in');
+            el.classList.add('sp-notif--out');
+            setTimeout(function() { if (el.parentNode) el.parentNode.removeChild(el); }, 450);
+        }
+
+        el.querySelector('.sp-close').addEventListener('click', dismiss);
+        setTimeout(dismiss, 5500);
+    }
+
+    // First one after 2.5 s, then randomised 4–9 s apart
+    setTimeout(function first() {
+        showSP();
+        setTimeout(first, 4000 + Math.random() * 5000);
+    }, 2500);
+}
+
+document.addEventListener('DOMContentLoaded', startSocialProofNotifications);
